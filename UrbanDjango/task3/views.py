@@ -5,12 +5,9 @@ def main_page(request):
     return render(request, 'third_task/main_page.html')
 
 def shop_page(request):
-    items = {
-        'item1': 'Игровая приставка',
-        'item2': 'Игровая мышь',
-        'item3': 'Игровая клавиатура',
-    }
-    return render(request, 'third_task/shop_page.html', {'items': items})
+    context = {'games': ['Atomic Heart', 'Cyberpunk 2077']}
+
+    return render(request, 'third_task/shop_page.html', {'context': context})
 
 def cart_page(request):
     return render(request, 'third_task/cart_page.html')

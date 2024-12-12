@@ -6,7 +6,10 @@
     <title>Главная страница</title>
 </head>
 <body>
-    <h1>Главная страница</h1>
+    {% block pagename %}
+    <h1>Магазин игр</h1>
+    {% endblock %}
+    {% block menu %}
     <nav>
     <ui>
         <li><a href="/">Главная</a></li>
@@ -14,5 +17,8 @@
         <li><a href="/cart/">Корзина</a></li>
     </ui>
     </nav>
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
 </body>
 </html>
