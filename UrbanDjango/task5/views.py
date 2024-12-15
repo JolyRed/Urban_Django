@@ -3,7 +3,7 @@ from .forms import UserRegister
 from django.http import HttpResponse
 
 # Create your views here.
-def sigh_up_by_django(request):
+def sign_up_by_django(request):
     users = ['login1', 'user1', 'admin']
     info = {'form': UserRegister()}
 
@@ -15,22 +15,22 @@ def sigh_up_by_django(request):
             repeat_password = form.cleaned_data['repeat_password']
             age = form.cleaned_data['age']
 
-            if password == repeat_password and age >= 18 and username not in users:
+            if password == repeat_password and int(age) >= 18 and username not in users:
                 return HttpResponse(f'Приветствуем, {username}!')
             else:
                 if password != repeat_password:
                     info['error'] = 'Пароли не совпадают'
-                elif age < 18:
+                elif int(age) < 18:
                     info['error'] = 'Вам должно быть больше 18 лет'
                 elif username in users:
                     info['error'] = 'Такой пользователь уже существует'
         else:
             info['form'] = form 
 
-    return render(request, 'fifth_task/registration_page.html', info) 
+    return render(request, 'fifth_task/registration_page.html', {'info': info}) 
 
 
-def sing_up_by_html(request):
+def sign_up_by_html(request):
     users = ['login1', 'user1', 'admin']
     info = {}
 
